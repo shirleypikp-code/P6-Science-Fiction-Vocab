@@ -1,4 +1,10 @@
-export type Category = 'Space & Stars' | 'Cybernetics & AI' | 'Cosmic Physics' | 'Future Worlds';
+export type Category =
+  | 'Literary & Genres'
+  | 'Story & Science'
+  | 'Space & Stars'
+  | 'Cybernetics & AI'
+  | 'Cosmic Physics'
+  | 'Future Worlds';
 
 export interface VocabWord {
   id: string;

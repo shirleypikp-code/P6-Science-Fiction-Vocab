@@ -1,7 +1,7 @@
 import { VocabWord, Badge, ShipCustomization, RankInfo } from '../types/game';
 
 export const VOCABULARY_LIST: VocabWord[] = [
-  // --- REQUIRED CORE 7 SCI-FI WORDS ---
+  // --- PRIMARY 6 CURRICULUM CORE WORDS ---
   {
     id: 'robot',
     word: 'ROBOT',
@@ -85,6 +85,128 @@ export const VOCABULARY_LIST: VocabWord[] = [
     origin: 'Coined in astrophysicist circles and popularized worldwide in 1967 by theoretical physicist John Archibald Wheeler!',
     synonyms: ['gravitational abyss', 'cosmic singularity', 'light-trap'],
     hint: 'A point in space with gravity so strong that not even light can escape.'
+  },
+
+  // --- NEW CURRICULUM LITERARY & DESCRIPTIVE WORDS ---
+  {
+    id: 'science-fiction',
+    word: 'SCIENCE FICTION',
+    phonetic: '/ˈsaɪ.əns ˈfɪk.ʃən/',
+    partOfSpeech: 'noun',
+    category: 'Literary & Genres',
+    definition: 'A genre of speculative fiction dealing with imaginative futuristic concepts such as advanced technology, space exploration, time travel, and parallel universes.',
+    sentence: 'My favorite science fiction novel features a crew of young astronauts journeying through a wormhole to an alien world.',
+    origin: 'First recorded in 1851 by William Wilson, later popularized in the 1920s with Hugo Gernsback’s pulp magazines!',
+    synonyms: ['sci-fi', 'speculative fiction', 'futuristic literature'],
+    hint: 'A story genre about future technology, aliens, time travel, and space.'
+  },
+  {
+    id: 'fiction',
+    word: 'FICTION',
+    phonetic: '/ˈfɪk.ʃən/',
+    partOfSpeech: 'noun',
+    category: 'Literary & Genres',
+    definition: 'Literature in the form of prose, especially short stories and novels, that describes imaginary events, characters, and worlds created by the author.',
+    sentence: 'While history books report real battles, works of fiction let readers explore imaginary galaxies and invent heroic characters.',
+    origin: 'From Latin "fictio" (a shaping, feigning, or fashioning), from "fingere" (to mold, shape, or invent).',
+    synonyms: ['make-believe', 'storytelling', 'invented tale', 'literature'],
+    hint: 'Stories created from the author’s imagination rather than real facts.'
+  },
+  {
+    id: 'non-fiction',
+    word: 'NON-FICTION',
+    phonetic: '/ˌnɑːnˈfɪk.ʃən/',
+    partOfSpeech: 'noun',
+    category: 'Literary & Genres',
+    definition: 'Prose writing that is based on true facts, real people, historical events, scientific research, and real-life discoveries.',
+    sentence: 'The student read a non-fiction astronomy book about NASA rover missions on Mars to write her science report.',
+    origin: 'From Latin "non" (not) + "fictio" (invention). Covers biographies, essays, textbooks, and documentaries.',
+    synonyms: ['factual writing', 'factual literature', 'true accounts', 'documentary text'],
+    hint: 'Writing that tells true facts about real life, science, and history.'
+  },
+  {
+    id: 'fantasy',
+    word: 'FANTASY',
+    phonetic: '/ˈfæn.tə.si/',
+    partOfSpeech: 'noun',
+    category: 'Literary & Genres',
+    definition: 'A genre of imaginative fiction set in fictional realms featuring magic, mythical beasts, wizards, and supernatural powers.',
+    sentence: 'Unlike science fiction which explores technology, fantasy transports readers to mystical kingdoms where dragons breathe starlight.',
+    origin: 'From Greek "phantasia" (imagination, appearance, visual image), from "phainein" (to show or bring to light).',
+    synonyms: ['magical fiction', 'mythical lore', 'high fantasy'],
+    hint: 'Stories full of magic, mythical creatures, wizards, and enchanted realms.'
+  },
+  {
+    id: 'fairytale',
+    word: 'FAIRYTALE',
+    phonetic: '/ˈfer.i.teɪl/',
+    partOfSpeech: 'noun',
+    category: 'Literary & Genres',
+    definition: 'A traditional children’s story about magical folk, legendary beings, castles, moral lessons, and happy endings.',
+    sentence: 'The classic fairytale told the tale of a courageous apprentice who outsmarted a mountain troll with three clever riddles.',
+    origin: 'Derived from French "conte de fées" (tales of fairies), popularized by Madame d’Aulnoy in 1697.',
+    synonyms: ['fable', 'folk story', 'legendary tale'],
+    hint: 'A magical traditional children’s story often beginning with "Once upon a time".'
+  },
+  {
+    id: 'adventure',
+    word: 'ADVENTURE',
+    phonetic: '/ədˈven.tʃɚ/',
+    partOfSpeech: 'noun',
+    category: 'Literary & Genres',
+    definition: 'An exciting, daring, or risky experience or quest involving remarkable challenges, unexpected journeys, and heroic exploration.',
+    sentence: 'The young cadets embarked on a thrilling space adventure through uncharted asteroid belts to rescue their missing robotic shuttle.',
+    origin: 'From Old French "aventure" (fate, destiny, chance occurrence), from Latin "advenire" (to happen, arrive).',
+    synonyms: ['quest', 'expedition', 'daring escapade', 'journey'],
+    hint: 'An exciting, daring journey or quest packed with action and challenges.'
+  },
+  {
+    id: 'novel',
+    word: 'NOVEL',
+    phonetic: '/ˈnɑː.vəl/',
+    partOfSpeech: 'noun',
+    category: 'Literary & Genres',
+    definition: 'A long written work of narrative fiction, usually published as a complete book with chapters, a structured plot, and detailed characters.',
+    sentence: 'She spent the entire weekend reading a gripping 300-page sci-fi novel about time travelers lost in deep space.',
+    origin: 'From Italian "novella" (new, a short story of novelties), from Latin "novus" (new).',
+    synonyms: ['fictional book', 'extended story', 'tome'],
+    hint: 'A long book-length fictional story divided into chapters.'
+  },
+  {
+    id: 'altered',
+    word: 'ALTERED',
+    phonetic: '/ˈɔːl.tɚd/',
+    partOfSpeech: 'adjective',
+    category: 'Story & Science',
+    definition: 'Changed, modified, or transformed in appearance, nature, character, or composition.',
+    sentence: 'The cosmic radiation altered the physical structure of the crystals, causing them to glow with an eerie neon luminescence.',
+    origin: 'From Medieval Latin "alterare" (to make other or different), from "alter" (the other of two).',
+    synonyms: ['modified', 'transformed', 'changed', 'adjusted'],
+    hint: 'Changed or transformed from its original state.'
+  },
+  {
+    id: 'occupants',
+    word: 'OCCUPANTS',
+    phonetic: '/ˈɑː.kjə.pənts/',
+    partOfSpeech: 'noun',
+    category: 'Story & Science',
+    definition: 'Persons, crew members, or beings residing in or physically present inside a particular space, vehicle, starship, or room.',
+    sentence: 'Emergency sirens sounded as the occupants of the orbital shuttle strapped into their gravity seats for planetary re-entry.',
+    origin: 'From Latin "occupare" (to seize, take possession of, inhabit).',
+    synonyms: ['inhabitants', 'passengers', 'crew members', 'residents'],
+    hint: 'The people, crew, or beings inside a vehicle, room, or spaceship.'
+  },
+  {
+    id: 'features',
+    word: 'FEATURES',
+    phonetic: '/ˈfiː.tʃɚz/',
+    partOfSpeech: 'noun',
+    category: 'Story & Science',
+    definition: 'Distinctive visual traits, noticeable physical parts, prominent characteristics, or special capabilities of a person, machine, or landscape.',
+    sentence: 'One of the robot’s key features is its night-vision optical sensors and laser measuring scanner.',
+    origin: 'From Old French "faiture" (make, form, shape), from Latin "factura" (a making or formation).',
+    synonyms: ['characteristics', 'attributes', 'traits', 'properties'],
+    hint: 'Prominent traits, special capabilities, or distinctive characteristics.'
   },
 
   // --- ADDITIONAL RICH SCI-FI WORDS FOR EXTENDED EXPLORATION ---
@@ -304,6 +426,26 @@ export const CORE_SEVEN_IDS = [
   'black-hole'
 ];
 
+export const ALL_CURRICULUM_IDS = [
+  'robot',
+  'mechanical',
+  'blueprint',
+  'future',
+  'alien',
+  'space',
+  'black-hole',
+  'science-fiction',
+  'fiction',
+  'non-fiction',
+  'fantasy',
+  'fairytale',
+  'adventure',
+  'novel',
+  'altered',
+  'occupants',
+  'features'
+];
+
 export const RANKS: RankInfo[] = [
   { rank: 1, title: 'Starfleet Cadet', minXp: 0, badge: '⭐', color: 'text-slate-400' },
   { rank: 2, title: 'Cosmic Navigator', minXp: 350, badge: '🚀', color: 'text-cyan-400' },
@@ -314,6 +456,13 @@ export const RANKS: RankInfo[] = [
 ];
 
 export const BADGES: Badge[] = [
+  {
+    id: 'curriculum-master',
+    title: 'Literary Commander',
+    description: 'Master all 17 curriculum vocabulary words covering sci-fi concepts and literary genres.',
+    icon: '🏆',
+    category: 'mastery'
+  },
   {
     id: 'core-seven-master',
     title: 'Core 7 Master',
@@ -345,14 +494,14 @@ export const BADGES: Badge[] = [
   {
     id: 'core-savior',
     title: 'Warp Core Savior',
-    description: 'Successfully complete all 7 chapters of the Sector 7 cloze adventure.',
+    description: 'Successfully complete all 10 chapters of the Sector 7 cloze adventure.',
     icon: '🔮',
     category: 'progress'
   },
   {
     id: 'lexicon-master',
     title: 'Master of the Stars',
-    description: 'Master at least 12 sci-fi vocabulary terms in the academy.',
+    description: 'Master at least 15 sci-fi vocabulary terms in the academy.',
     icon: '📜',
     category: 'mastery'
   },
@@ -568,5 +717,32 @@ export const STORY_CHAPTERS: StoryChapter[] = [
     missingWordId: 'future',
     options: ['FUTURE', 'ROBOT', 'BLUEPRINT', 'MECHANICAL'],
     explanation: 'The future is the period of time that will come after the present moment.'
+  },
+  {
+    id: 8,
+    title: 'Chapter 8: The Library of Futuristic Tales',
+    scenario: 'In the observation lounge, the cadets study archive holobooks about time portals, androids, and galactic travel.',
+    prompt: 'Librarian: "Stories imagining space exploration, warp drives, and parallel universes belong to the exciting literary genre of..."',
+    missingWordId: 'science-fiction',
+    options: ['SCIENCE FICTION', 'FAIRYTALE', 'NON-FICTION', 'FANTASY'],
+    explanation: 'Science fiction is speculative literature based on futuristic science, space exploration, and technology.'
+  },
+  {
+    id: 9,
+    title: 'Chapter 9: The Shuttle Passengers',
+    scenario: 'An escape pod from an adrift research vessel docks at our airlock. The biometric sensors count twelve living scientists safely inside.',
+    prompt: 'Chief Medic: "Check life support immediately! Ensure the rescued scientists inside the pod—the craft’s weary..."',
+    missingWordId: 'occupants',
+    options: ['OCCUPANTS', 'FEATURES', 'ALTERED', 'NOVEL'],
+    explanation: 'Occupants are the living persons, passengers, or crew members inside a vehicle or room.'
+  },
+  {
+    id: 10,
+    title: 'Chapter 10: The Transformed Nebula Crystals',
+    scenario: 'Samples of space minerals retrieved from the nebula have undergone a complete physical transformation due to cosmic radiation.',
+    prompt: 'Geologist: "Look at the glowing molecular lattice! Its original atomic structure has been completely modified and..."',
+    missingWordId: 'altered',
+    options: ['ALTERED', 'MECHANICAL', 'NON-FICTION', 'FUTURE'],
+    explanation: 'Altered means changed, modified, or transformed in nature or appearance.'
   }
 ];

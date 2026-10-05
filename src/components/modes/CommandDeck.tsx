@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { GameMode, PlayerProfile } from '../../types/game';
-import { BADGES, VOCABULARY_LIST, CORE_SEVEN_IDS } from '../../data/vocabulary';
+import { BADGES, VOCABULARY_LIST, CORE_SEVEN_IDS, ALL_CURRICULUM_IDS } from '../../data/vocabulary';
 import { getPlayerRank, getNextRank } from '../../utils/storage';
 import StarshipVisualizer from '../StarshipVisualizer';
 import { Play, Sparkles, Zap, Award, BookOpen, Layers, Edit3, Check } from 'lucide-react';
@@ -228,27 +228,27 @@ export default function CommandDeck({
         </div>
       </div>
 
-      {/* Featured Core 7 Sci-Fi Unit Section */}
+      {/* Featured Core Curriculum Sci-Fi & Literary Unit Section */}
       <div className="bg-gradient-to-r from-cyan-950/40 via-slate-900/80 to-slate-900/60 border-2 border-cyan-500/40 rounded-3xl p-6 relative overflow-hidden shadow-xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono uppercase text-cyan-400 tracking-wider">
               <span>Required Curriculum Unit</span>
               <span aria-hidden="true">·</span>
-              <span>Primary 6 Sci-Fi Lexicon</span>
+              <span>Primary 6 Sci-Fi & Literary Lexicon (17 Words)</span>
             </div>
             <h3 className="text-xl font-bold text-white font-display mt-0.5">
-              Core 7 Science Fiction Words
+              Target Vocabulary Unit
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-              Focus mastery words for this module: robot, mechanical, blueprint, future, alien, space, and black hole.
+              Sci-fi concepts, story elements & genres: robot, mechanical, blueprint, future, alien, space, black hole, science fiction, fiction, non-fiction, fantasy, fairytale, adventure, novel, altered, occupants, features.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <span className="text-xs font-mono text-slate-300">
               <strong className="text-cyan-400 font-bold">
-                {profile.wordsMastered.filter(id => CORE_SEVEN_IDS.includes(id)).length} / 7
+                {profile.wordsMastered.filter(id => ALL_CURRICULUM_IDS.includes(id)).length} / {ALL_CURRICULUM_IDS.length}
               </strong>{' '}
               Mastered
             </span>
@@ -257,14 +257,14 @@ export default function CommandDeck({
               className="px-4 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 rounded-xl shadow-md shadow-cyan-600/30 flex items-center gap-1.5 transition-all cursor-pointer"
             >
               <Play className="w-3.5 h-3.5 fill-white" />
-              <span>Play Core 7 Story</span>
+              <span>Play 10-Chapter Story</span>
             </button>
           </div>
         </div>
 
-        {/* 7 Words Badges/Chips */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5 pt-2 border-t border-slate-800/80">
-          {CORE_SEVEN_IDS.map((wordId) => {
+        {/* 17 Words Badges/Chips */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5 pt-2 border-t border-slate-800/80">
+          {ALL_CURRICULUM_IDS.map((wordId) => {
             const wordObj = VOCABULARY_LIST.find(w => w.id === wordId);
             const isMastered = profile.wordsMastered.includes(wordId);
             if (!wordObj) return null;
@@ -279,9 +279,9 @@ export default function CommandDeck({
                 }`}
               >
                 <div className="text-[10px] font-mono text-slate-500 uppercase truncate">
-                  {wordObj.category.split('&')[0].trim()}
+                  {wordObj.category.replace('&', '+').trim()}
                 </div>
-                <div className="font-mono text-xs font-bold text-white mt-0.5 truncate">
+                <div className="font-mono text-xs font-bold text-white mt-0.5 truncate" title={wordObj.word}>
                   {wordObj.word}
                 </div>
                 <div className="text-[10px] mt-1 font-semibold flex items-center justify-center gap-1">

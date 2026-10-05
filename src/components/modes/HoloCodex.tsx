@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { VocabWord, Category, PlayerProfile } from '../../types/game';
-import { VOCABULARY_LIST, CORE_SEVEN_IDS } from '../../data/vocabulary';
+import { VOCABULARY_LIST, CORE_SEVEN_IDS, ALL_CURRICULUM_IDS } from '../../data/vocabulary';
 import { speakWord } from '../../utils/audio';
 import { Search, Volume2, Sparkles, CheckCircle2, Rotate3d, BookOpen, Layers } from 'lucide-react';
 
@@ -12,18 +12,27 @@ interface HoloCodexProps {
 
 export default function HoloCodex({ profile, onUpdateProfile, onCheckBadges }: HoloCodexProps) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('Core 7 Required');
+  const [selectedCategory, setSelectedCategory] = useState<string>('Curriculum Unit (17)');
   const [activeWord, setActiveWord] = useState<VocabWord | null>(VOCABULARY_LIST[0]);
   const [isFlashcardMode, setIsFlashcardMode] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [flashcardIdx, setFlashcardIdx] = useState(0);
 
-  const categories = ['Core 7 Required', 'All', 'Space & Stars', 'Cybernetics & AI', 'Cosmic Physics', 'Future Worlds'];
+  const categories = [
+    'Curriculum Unit (17)',
+    'Literary & Genres',
+    'Story & Science',
+    'All',
+    'Space & Stars',
+    'Cybernetics & AI',
+    'Cosmic Physics',
+    'Future Worlds'
+  ];
 
   const filteredWords = VOCABULARY_LIST.filter((w) => {
     let matchesCategory = true;
-    if (selectedCategory === 'Core 7 Required') {
-      matchesCategory = CORE_SEVEN_IDS.includes(w.id);
+    if (selectedCategory === 'Curriculum Unit (17)') {
+      matchesCategory = ALL_CURRICULUM_IDS.includes(w.id);
     } else if (selectedCategory !== 'All') {
       matchesCategory = w.category === selectedCategory;
     }

@@ -26,12 +26,13 @@ export default function WarpDecoder({
 
   // Filter or randomize words
   const currentWord: VocabWord = VOCABULARY_LIST[currentWordIndex % VOCABULARY_LIST.length];
-  const targetNoSpaces = currentWord.word.replace(/\s+/g, '');
-  const wordTokens = currentWord.word.split(' ');
+  const targetNoSpaces = currentWord.word.replace(/[\s-]+/g, '');
+  const hasHyphen = currentWord.word.includes('-');
+  const wordTokens = hasHyphen ? currentWord.word.split('-') : currentWord.word.split(' ');
 
-  // Helper to scramble a word reliably (only non-space letters)
+  // Helper to scramble a word reliably (only letters, ignoring spaces and hyphens)
   const initWord = useCallback((wordObj: VocabWord) => {
-    const lettersOnly = wordObj.word.split('').filter(char => char !== ' ');
+    const lettersOnly = wordObj.word.split('').filter(char => char !== ' ' && char !== '-');
     const rawLetters = lettersOnly.map((char, originalIdx) => ({ char, originalIdx }));
     // Shuffle ensuring not identical
     let shuffled = [...rawLetters].sort(() => Math.random() - 0.5);
@@ -277,6 +278,11 @@ export default function WarpDecoder({
                 return (
                   <div key={tokenIdx} className="flex items-center gap-2 sm:gap-2.5">
                     {tokenSlots}
+                    {hasHyphen && tokenIdx < wordTokens.length - 1 && (
+                      <span className="font-mono text-xl sm:text-2xl font-bold text-cyan-400 select-none px-1">
+                        -
+                      </span>
+                    )}
                   </div>
                 );
               });

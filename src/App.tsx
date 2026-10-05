@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { GameMode, PlayerProfile, Badge } from './types/game';
 import { loadPlayerProfile, savePlayerProfile } from './utils/storage';
-import { BADGES, CORE_SEVEN_IDS } from './data/vocabulary';
+import { BADGES, CORE_SEVEN_IDS, ALL_CURRICULUM_IDS } from './data/vocabulary';
 import { playLevelUpSound } from './utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -36,6 +36,7 @@ export default function App() {
       if (p.unlockedBadges.includes(b.id)) return;
 
       let qualify = false;
+      if (b.id === 'curriculum-master' && ALL_CURRICULUM_IDS.every(id => p.wordsMastered.includes(id))) qualify = true;
       if (b.id === 'core-seven-master' && CORE_SEVEN_IDS.every(id => p.wordsMastered.includes(id))) qualify = true;
       if (b.id === 'first-contact' && p.wordsMastered.length >= 1) qualify = true;
       if (b.id === 'speed-of-light' && p.streak >= 5) qualify = true;
