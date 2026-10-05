@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { PlayerProfile, VocabWord } from '../../types/game';
 import { VOCABULARY_LIST } from '../../data/vocabulary';
+import { getMaxShields, getCreditMultiplier } from '../../data/upgrades';
 import { playLaserSound, playErrorSound, playSuccessSound, playLevelUpSound } from '../../utils/audio';
 import confetti from 'canvas-confetti';
 import { Shield, Zap, RotateCcw, Target, Sparkles, Award } from 'lucide-react';
@@ -24,7 +25,10 @@ export default function AsteroidQuiz({
   onUpdateProfile,
   onCheckBadges
 }: AsteroidQuizProps) {
-  const [shields, setShields] = useState(3);
+  const maxShields = getMaxShields(profile.upgrades);
+  const creditMultiplier = getCreditMultiplier(profile.upgrades);
+
+  const [shields, setShields] = useState(maxShields);
   const [wave, setWave] = useState(1);
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -95,7 +99,7 @@ export default function AsteroidQuiz({
         const updated = {
           ...prev,
           xp: prev.xp + addedPoints,
-          credits: prev.credits + Math.floor(addedPoints * 0.8),
+          credits: prev.credits + Math.round(addedPoints * 0.8 * creditMultiplier),
           streak: nextStreak,
           highestStreak: Math.max(prev.highestStreak, nextStreak),
           correctAnswers: prev.correctAnswers + 1,
@@ -138,7 +142,7 @@ export default function AsteroidQuiz({
   };
 
   const restartMission = () => {
-    setShields(3);
+    setShields(maxShields);
     setWave(1);
     setScore(0);
     setIsGameOver(false);
@@ -170,14 +174,14 @@ export default function AsteroidQuiz({
           {/* Shields */}
           <div>
             <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mb-1">
-              Hull Shields
+              Hull Shields ({shields}/{maxShields})
             </div>
             <div className="flex items-center gap-1.5">
-              {[1, 2, 3].map((slot) => (
+              {Array.from({ length: maxShields }).map((_, idx) => (
                 <Shield
-                  key={slot}
+                  key={idx}
                   className={`w-5 h-5 transition-all ${
-                    slot <= shields
+                    idx < shields
                       ? 'text-cyan-400 fill-cyan-400/30'
                       : 'text-slate-700 fill-transparent'
                   }`}

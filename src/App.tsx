@@ -14,6 +14,10 @@ import WarpCoreStory from './components/modes/WarpCoreStory';
 import AsteroidQuiz from './components/modes/AsteroidQuiz';
 import HoloCodex from './components/modes/HoloCodex';
 import StarshipHangar from './components/modes/StarshipHangar';
+import WordHunter from './components/modes/WordHunter';
+import FallingWords from './components/modes/FallingWords';
+import MemoryMatrix from './components/modes/MemoryMatrix';
+import TechLab from './components/modes/TechLab';
 import CadetCertificate from './components/CadetCertificate';
 import BadgeToast from './components/BadgeToast';
 
@@ -138,6 +142,38 @@ export default function App() {
 
         {currentMode === 'asteroid-quiz' && (
           <AsteroidQuiz
+            profile={profile}
+            onUpdateProfile={setProfile}
+            onCheckBadges={checkBadges}
+          />
+        )}
+
+        {currentMode === 'falling-words' && (
+          <FallingWords
+            profile={profile}
+            onUpdateProfile={setProfile}
+            onCheckBadges={checkBadges}
+          />
+        )}
+
+        {currentMode === 'word-hunter' && (
+          <WordHunter
+            profile={profile}
+            onUpdateProfile={setProfile}
+            onCheckBadges={checkBadges}
+          />
+        )}
+
+        {currentMode === 'memory-matrix' && (
+          <MemoryMatrix
+            profile={profile}
+            onUpdateProfile={setProfile}
+            onCheckBadges={checkBadges}
+          />
+        )}
+
+        {currentMode === 'upgrades' && (
+          <TechLab
             profile={profile}
             onUpdateProfile={setProfile}
             onCheckBadges={checkBadges}

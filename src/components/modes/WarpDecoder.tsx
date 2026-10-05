@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { VocabWord, PlayerProfile } from '../../types/game';
 import { VOCABULARY_LIST } from '../../data/vocabulary';
+import { getCreditMultiplier, getScannerLevel } from '../../data/upgrades';
 import { playSuccessSound, playErrorSound, playWarpSound, speakWord } from '../../utils/audio';
 import confetti from 'canvas-confetti';
 import { Volume2, HelpCircle, ArrowRight, RotateCcw, Zap, Sparkles, CheckCircle2 } from 'lucide-react';
@@ -87,7 +88,8 @@ export default function WarpDecoder({
 
       const streakBonus = Math.min(50, profile.streak * 10);
       const earnedXp = 60 + streakBonus;
-      const earnedCredits = 50 + Math.floor(streakBonus / 2);
+      const creditMultiplier = getCreditMultiplier(profile.upgrades);
+      const earnedCredits = Math.round((50 + Math.floor(streakBonus / 2)) * creditMultiplier);
 
       onUpdateProfile((prev) => {
         const nextStreak = prev.streak + 1;

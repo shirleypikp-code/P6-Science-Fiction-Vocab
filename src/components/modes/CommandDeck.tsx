@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { GameMode, PlayerProfile } from '../../types/game';
 import { BADGES, VOCABULARY_LIST, CORE_SEVEN_IDS, ALL_CURRICULUM_IDS } from '../../data/vocabulary';
 import { getPlayerRank, getNextRank } from '../../utils/storage';
+import { getCreditMultiplier } from '../../data/upgrades';
 import StarshipVisualizer from '../StarshipVisualizer';
-import { Play, Sparkles, Zap, Award, BookOpen, Layers, Edit3, Check } from 'lucide-react';
+import { Play, Sparkles, Zap, Award, BookOpen, Layers, Edit3, Check, Cpu, Rocket } from 'lucide-react';
 
 interface CommandDeckProps {
   profile: PlayerProfile;
@@ -358,8 +359,155 @@ export default function CommandDeck({
         </div>
       </div>
 
+      {/* Arcade Mini Games Grid */}
+      <div>
+        <div className="flex items-center justify-between mb-5">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">
+              <span>Simulation Holodeck</span>
+              <span aria-hidden="true">·</span>
+              <span>Fast-Paced Action</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold text-white font-display">
+              Arcade Mini Games
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400">
+              Test your reaction speed, pattern recognition, and neural memory with high-yield credit arcade challenges.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {/* Mini Game 1: Falling Words */}
+          <div className="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5 flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-mono text-slate-500 uppercase">Arcade 01</span>
+                <span className="text-xs font-mono text-cyan-400 bg-cyan-950/50 border border-cyan-800/60 px-2.5 py-0.5 rounded-full">
+                  Up to +120 Credits
+                </span>
+              </div>
+              <div className="flex items-start gap-3.5 mb-2">
+                <span className="text-2xl p-2 bg-slate-950 rounded-xl border border-slate-800">
+                  ☄️
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    Cosmic Cargo Drop
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mt-1">
+                    Intercept falling cargo pods matching the target sci-fi definition before they enter planetary atmosphere.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <span className="text-xs text-slate-500 font-mono">Reaction & Speed</span>
+              <button
+                onClick={() => onSelectMode('falling-words')}
+                className="px-4 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 rounded-xl shadow-md shadow-cyan-600/20 flex items-center gap-1.5 transition-all cursor-pointer group-hover:scale-105 active:scale-95"
+              >
+                <Play className="w-3.5 h-3.5 fill-white" />
+                <span>Launch Cargo Drop</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Mini Game 2: Cyber-Grid Word Hunter */}
+          <div className="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5 flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-mono text-slate-500 uppercase">Arcade 02</span>
+                <span className="text-xs font-mono text-cyan-400 bg-cyan-950/50 border border-cyan-800/60 px-2.5 py-0.5 rounded-full">
+                  +60 Cr / Word Found
+                </span>
+              </div>
+              <div className="flex items-start gap-3.5 mb-2">
+                <span className="text-2xl p-2 bg-slate-950 rounded-xl border border-slate-800">
+                  🔍
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    Cyber-Grid Word Hunter
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mt-1">
+                    Scan the 10x10 quantum letter matrix to assemble and discover hidden curriculum vocabulary words.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <span className="text-xs text-slate-500 font-mono">Pattern Search</span>
+              <button
+                onClick={() => onSelectMode('word-hunter')}
+                className="px-4 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 rounded-xl shadow-md shadow-cyan-600/20 flex items-center gap-1.5 transition-all cursor-pointer group-hover:scale-105 active:scale-95"
+              >
+                <Play className="w-3.5 h-3.5 fill-white" />
+                <span>Play Word Hunter</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Mini Game 3: Quantum Memory Matrix */}
+          <div className="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5 flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-mono text-slate-500 uppercase">Arcade 03</span>
+                <span className="text-xs font-mono text-cyan-400 bg-cyan-950/50 border border-cyan-800/60 px-2.5 py-0.5 rounded-full">
+                  +50 Cr / Match
+                </span>
+              </div>
+              <div className="flex items-start gap-3.5 mb-2">
+                <span className="text-2xl p-2 bg-slate-950 rounded-xl border border-slate-800">
+                  🧠
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    Quantum Memory Matrix
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mt-1">
+                    Flip quantum memory cards to pair sci-fi vocabulary terms with their correct definitions.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <span className="text-xs text-slate-500 font-mono">Memory & Match</span>
+              <button
+                onClick={() => onSelectMode('memory-matrix')}
+                className="px-4 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 rounded-xl shadow-md shadow-cyan-600/20 flex items-center gap-1.5 transition-all cursor-pointer group-hover:scale-105 active:scale-95"
+              >
+                <Play className="w-3.5 h-3.5 fill-white" />
+                <span>Pair Neural Cubes</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Auxiliary Learning Tools & Diploma Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div
+          onClick={() => onSelectMode('upgrades')}
+          className="bg-gradient-to-b from-cyan-950/30 to-slate-900/60 border border-cyan-500/40 hover:border-cyan-400 rounded-2xl p-5 cursor-pointer transition-all hover:bg-slate-850 group"
+        >
+          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+            ⚡
+          </div>
+          <h4 className="font-bold text-white text-base flex items-center justify-between">
+            <span>Tech Lab Upgrades</span>
+            <span className="text-xs font-mono text-cyan-400 font-normal">
+              {getCreditMultiplier(profile.upgrades)}x Yield
+            </span>
+          </h4>
+          <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+            Spend earned Cosmic Credits to unlock credit boosters, shield upgrades, and temporal dilators.
+          </p>
+        </div>
+
         <div
           onClick={() => onSelectMode('holo-codex')}
           className="bg-slate-900/60 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 cursor-pointer transition-all hover:bg-slate-850"
@@ -369,7 +517,7 @@ export default function CommandDeck({
           </div>
           <h4 className="font-bold text-white text-base">Holo-Codex Encyclopedia</h4>
           <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-            Browse all 24 science fiction vocabulary words with audio pronunciations, etymologies, and flashcards.
+            Browse all science fiction vocabulary words with audio pronunciations, etymologies, and flashcards.
           </p>
         </div>
 

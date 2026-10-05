@@ -17,6 +17,13 @@ export const DEFAULT_PROFILE: PlayerProfile = {
   unlockedShields: ['shield-cyan'],
   currentShield: 'shield-cyan',
   unlockedBadges: [],
+  upgrades: {
+    'ion-cannons': 1,
+    'deflector-hull': 1,
+    'tachyon-scanner': 1,
+    'chrono-warp': 1,
+    'quantum-core': 1
+  },
   soundEnabled: true,
   gamesPlayed: 0,
   correctAnswers: 0
@@ -27,7 +34,15 @@ export function loadPlayerProfile(): PlayerProfile {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return DEFAULT_PROFILE;
-    return { ...DEFAULT_PROFILE, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    return {
+      ...DEFAULT_PROFILE,
+      ...parsed,
+      upgrades: {
+        ...DEFAULT_PROFILE.upgrades,
+        ...(parsed.upgrades || {})
+      }
+    };
   } catch (e) {
     console.warn('Failed to load profile', e);
     return DEFAULT_PROFILE;

@@ -38,6 +38,25 @@ export interface ShipCustomization {
   colorHex: string;
 }
 
+export interface TechUpgradeLevel {
+  level: number;
+  title: string;
+  cost: number;
+  effectDescription: string;
+  multiplier?: number;
+  bonusValue?: number;
+}
+
+export interface TechUpgrade {
+  id: string;
+  name: string;
+  category: 'efficiency' | 'defense' | 'rewards' | 'chronos';
+  icon: string;
+  description: string;
+  maxLevel: number;
+  levels: TechUpgradeLevel[];
+}
+
 export interface PlayerProfile {
   name: string;
   xp: number;
@@ -52,6 +71,7 @@ export interface PlayerProfile {
   unlockedShields: string[];
   currentShield: string;
   unlockedBadges: string[];
+  upgrades: Record<string, number>; // upgradeId -> level (1-based)
   soundEnabled: boolean;
   gamesPlayed: number;
   correctAnswers: number;
@@ -63,9 +83,12 @@ export type GameMode =
   | 'transmission'
   | 'story-cloze'
   | 'asteroid-quiz'
+  | 'word-hunter'
+  | 'falling-words'
+  | 'memory-matrix'
   | 'holo-codex'
-  | 'holo-forge'
-  | 'hangar';
+  | 'hangar'
+  | 'upgrades';
 
 export interface RankInfo {
   rank: number;
