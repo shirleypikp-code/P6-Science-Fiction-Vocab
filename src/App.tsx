@@ -18,6 +18,7 @@ import WordHunter from './components/modes/WordHunter';
 import FallingWords from './components/modes/FallingWords';
 import MemoryMatrix from './components/modes/MemoryMatrix';
 import TechLab from './components/modes/TechLab';
+import MultiplayerHub from './components/modes/MultiplayerHub';
 import CadetCertificate from './components/CadetCertificate';
 import BadgeToast from './components/BadgeToast';
 
@@ -174,6 +175,14 @@ export default function App() {
 
         {currentMode === 'upgrades' && (
           <TechLab
+            profile={profile}
+            onUpdateProfile={setProfile}
+            onCheckBadges={checkBadges}
+          />
+        )}
+
+        {currentMode === 'multiplayer' && (
+          <MultiplayerHub
             profile={profile}
             onUpdateProfile={setProfile}
             onCheckBadges={checkBadges}

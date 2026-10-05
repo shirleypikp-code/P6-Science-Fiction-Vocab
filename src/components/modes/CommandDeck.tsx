@@ -4,7 +4,7 @@ import { BADGES, VOCABULARY_LIST, CORE_SEVEN_IDS, ALL_CURRICULUM_IDS } from '../
 import { getPlayerRank, getNextRank } from '../../utils/storage';
 import { getCreditMultiplier } from '../../data/upgrades';
 import StarshipVisualizer from '../StarshipVisualizer';
-import { Play, Sparkles, Zap, Award, BookOpen, Layers, Edit3, Check, Cpu, Rocket } from 'lucide-react';
+import { Play, Sparkles, Zap, Award, BookOpen, Layers, Edit3, Check, Cpu, Rocket, Trophy, Handshake } from 'lucide-react';
 
 interface CommandDeckProps {
   profile: PlayerProfile;
@@ -295,6 +295,44 @@ export default function CommandDeck({
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Starfleet Multiplayer Arena Banner */}
+      <div className="bg-gradient-to-r from-purple-950/40 via-slate-900/90 to-cyan-950/40 border-2 border-purple-500/40 rounded-3xl p-6 sm:p-7 relative overflow-hidden shadow-2xl">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+          <div className="space-y-2 max-w-xl">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase text-purple-400 tracking-wider">
+              <span>Classroom Multiplayer Pod</span>
+              <span aria-hidden="true">·</span>
+              <span>2–4 Cadets</span>
+            </div>
+            <h3 className="text-2xl font-bold text-white font-display">
+              Multiplayer Arena: Highest Score & Co-Op Squad
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Challenge your classmates in a <strong>Competitive Showdown</strong> to see who scores highest on the podium,
+              or <strong>Team Up as Bridge Officers</strong> to pool clues and decode answers together!
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => onSelectMode('multiplayer')}
+              className="px-5 py-3 font-bold text-white bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 rounded-xl shadow-lg shadow-amber-500/20 flex items-center gap-2 transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
+            >
+              <Trophy className="w-4 h-4 fill-white" />
+              <span>Highest Score Showdown</span>
+            </button>
+
+            <button
+              onClick={() => onSelectMode('multiplayer')}
+              className="px-5 py-3 font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 rounded-xl shadow-lg shadow-emerald-500/20 flex items-center gap-2 transition-all cursor-pointer text-xs sm:text-sm active:scale-95"
+            >
+              <Handshake className="w-4 h-4" />
+              <span>Team Up in Co-Op</span>
+            </button>
+          </div>
         </div>
       </div>
 

@@ -77,6 +77,17 @@ export interface PlayerProfile {
   correctAnswers: number;
 }
 
+export interface SquadPlayer {
+  id: string;
+  name: string;
+  avatar: string;
+  shipId: string;
+  role: 'Commander' | 'Science Officer' | 'Chief Engineer' | 'Navigator';
+  score: number;
+  streak: number;
+  correctAnswers: number;
+}
+
 export type GameMode =
   | 'menu'
   | 'decoder'
@@ -86,6 +97,7 @@ export type GameMode =
   | 'word-hunter'
   | 'falling-words'
   | 'memory-matrix'
+  | 'multiplayer'
   | 'holo-codex'
   | 'hangar'
   | 'upgrades';

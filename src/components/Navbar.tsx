@@ -21,11 +21,12 @@ export default function Navbar({
 
   const navLinks: { id: GameMode; label: string }[] = [
     { id: 'menu', label: 'Command Deck' },
+    { id: 'multiplayer', label: 'Multiplayer Hub' },
     { id: 'decoder', label: 'Warp Decoder' },
     { id: 'falling-words', label: 'Cargo Drop' },
     { id: 'word-hunter', label: 'Word Hunter' },
     { id: 'memory-matrix', label: 'Memory Matrix' },
-    { id: 'upgrades', label: 'Tech Upgrades' },
+    { id: 'upgrades', label: 'Tech Lab' },
     { id: 'holo-codex', label: 'Holo-Codex' },
     { id: 'hangar', label: 'Hangar' }
   ];
