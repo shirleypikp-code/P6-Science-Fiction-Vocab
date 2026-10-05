@@ -1,0 +1,6 @@
+{
+  "name": "Cosmic Lexicon: Sci-Fi Vocabulary Academy",
+  "description": "An engaging science fiction vocabulary game for Primary 6 students featuring galactic missions, word decoders, cloze adventures, points, and starship rewards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
